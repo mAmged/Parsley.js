@@ -102,10 +102,11 @@ $.each('addError updateError'.split(' '), function (i, method) {
   };
 });
 
-// Alleviate glaring Firefox bug https://bugzilla.mozilla.org/show_bug.cgi?id=1250521
+// Alleviate glaring Firefox & IR bugs:
+//  FF: https://bugzilla.mozilla.org/show_bug.cgi?id=1250521
+//  IE: https://connect.microsoft.com/IE/feedback/details/1816207
 // See also https://github.com/guillaumepotier/Parsley.js/issues/1068
-// Also appeared on IE https://github.com/guillaumepotier/Parsley.js/issues/1082
-if (/firefox|MSIE/i.test(navigator.userAgent)) {
+if (/firefox|msie/i.test(navigator.userAgent)) {
   $(document).on('change', 'select', evt => {
     $(evt.target).trigger('input');
   });
